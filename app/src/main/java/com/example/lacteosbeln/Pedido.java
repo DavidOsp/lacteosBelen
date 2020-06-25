@@ -6,20 +6,30 @@ public class Pedido {
     private String numeroDeRuta;
     private String nombreProveedor;
     private String cantidadLeche;
-    private boolean cantidadBotellas ;
-    private boolean cantidadLitros ;
+    private String tipoDeEnvase;
+    private String idProveedor;
 
 
+    public Pedido (){
+
+    }
 
 
-
-    public Pedido(String numeroDeRuta, String nombreProveedor, String cantidadLeche) {
+    public Pedido(String numeroDeRuta, String nombreProveedor, String cantidadLeche, String tipoDeEnvase) {
         this.numeroDeRuta = numeroDeRuta;
         this.nombreProveedor = nombreProveedor;
         this.cantidadLeche = cantidadLeche;
-        this.cantidadBotellas = cantidadBotellas;
-        this.cantidadLitros = cantidadLitros;
+        this.tipoDeEnvase = tipoDeEnvase;
+
     }
+    public String getIdProveedor() {
+        return idProveedor;
+    }
+
+    public void setIdProveedor(String idProveedor) {
+        this.idProveedor = idProveedor;
+    }
+
 
     public String getNumeroDeRuta() {
         return numeroDeRuta;
@@ -45,35 +55,19 @@ public class Pedido {
         this.cantidadLeche = cantidadLeche;
     }
 
-    public boolean getCantidadBotellas() {
-        return cantidadBotellas;
+    public String getTipoDeEnvase() {
+        return tipoDeEnvase;
     }
 
-    public void setCantidadBotellas(boolean cantidadBotellas) {
-        this.cantidadBotellas = cantidadBotellas;
-    }
-
-    public boolean getCantidadLitros() {
-        return cantidadLitros;
-    }
-
-    public void setCantidadLitros(boolean cantidadLitros) {
-        this.cantidadLitros = cantidadLitros;
+    public void setTipoDeEnvase(String tipoDeEnvase) {
+        this.tipoDeEnvase = tipoDeEnvase;
     }
 
     @NonNull
     @Override
     public String toString() {
 
-        if (cantidadBotellas){
-            return "Numero de ruta: "+numeroDeRuta+" Nombre del Proveedor: "+ nombreProveedor +" Cantidad de leche: "+ cantidadLeche +" Tipo de Envasado : Botellas";
-
-        }
-        else if (cantidadLitros){
-            return "Numero de ruta: "+numeroDeRuta+" Nombre del Proveedor: "+ nombreProveedor +" Cantidad de leche: "+ cantidadLeche +" Tipo de Envasado Litros";
-
-        }
-        return "err_del_condicional_de_la_clase";
+            return "Codigo Proveedor :"+ idProveedor + " Numero de ruta: "+numeroDeRuta+" Nombre del Proveedor: "+ nombreProveedor +" Cantidad de leche: "+ cantidadLeche + " Tipo de Envase : " + tipoDeEnvase ;
 
     }
 

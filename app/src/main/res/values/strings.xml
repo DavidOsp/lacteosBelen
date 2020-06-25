@@ -1,13 +1,14 @@
 <resources>
-    <string name="app_name">Lacteos Belénn</string>
+    <string name="app_name">Lacteos Belén</string>
     <string name="label_numero_de_ruta"> Seleccione el numero de ruta </string>
     <string name="label_nombre_proveedor">Seleccione el nombre del proveedor </string>
-    <string name="Numero_de_ruta">No de ruta</string>
-    <string name="Nombre_del_proveedor">Nombre del proveedor</string>
-    <string name="label_botellas_o_litros">Seleccione una sola opción:</string>
+    <string name="spinnerRuta">No de ruta</string>
+    <string name="Nombre_del_proveedor">Buscar Nombre</string>
+    <string name="tvTipoEnvase">Entrega leche en : </string>
     <string name="label_cantidad_de_leche">Ingrese la cantidad de leche </string>
     <string name="Cantidad_de_leche">Cant de leche </string>
     <string name="label_seleccion_botellas">Botellas </string>
     <string name="label_seleccion_litros">Litros </string>
     <string name="label_boton">Guardar </string>
+    <string name="tvNombre">Nombre</string>
 </resources>

@@ -1,136 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/TVNroDeRuta"
-        android:layout_width="104dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginTop="144dp"
-        android:text="@string/label_numero_de_ruta"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/ETNumeroDeRuta"
-        android:layout_width="105dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="68dp"
-        android:editable="false"
-        android:ems="10"
-        android:hint="@string/Numero_de_ruta"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVNroDeRuta" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup2"
-        android:layout_width="119dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginLeft="92dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVBotellaOLitros">
-
-        <RadioButton
-            android:id="@+id/BtnBotellas"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_seleccion_botellas"
-            android:textSize="18sp" />
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
 
-        <RadioButton
-            android:id="@+id/BtnLitros"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_seleccion_litros"
-            android:textSize="18sp" />
-    </RadioGroup>
 
-    <TextView
-        android:id="@+id/TVBotellaOLitros"
-        android:layout_width="110dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginLeft="92dp"
-        android:layout_marginTop="72dp"
-        android:text="@string/label_botellas_o_litros"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ETNumeroDeRuta" />
+            <EditText
+                android:id="@+id/ETCantidadLeche"
+                android:layout_width="145dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginLeft="84dp"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:hint="@string/Cantidad_de_leche"
+                android:inputType="number"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TVCantidadLeche" />
 
-    <TextView
-        android:id="@+id/TVNombreProveedor"
-        android:layout_width="183dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginLeft="92dp"
-        android:layout_marginTop="144dp"
-        android:text="@string/label_nombre_proveedor"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/TVNroDeRuta"
-        app:layout_constraintTop_toTopOf="parent" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvLista"
+                android:layout_width="196dp"
+                android:layout_height="174dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginLeft="60dp"
+                app:layout_constraintStart_toEndOf="@+id/TVCantidadLeche"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-    <EditText
-        android:id="@+id/ETNombreProveedor"
-        android:layout_width="197dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginLeft="92dp"
-        android:layout_marginTop="68dp"
-        android:ems="10"
-        android:hint="@string/Nombre_del_proveedor"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/ETNumeroDeRuta"
-        app:layout_constraintTop_toBottomOf="@+id/TVNombreProveedor" />
+            </androidx.recyclerview.widget.RecyclerView>
 
-    <Button
-        android:id="@+id/BtnGuardar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="204dp"
-        android:layout_marginLeft="204dp"
-        android:layout_marginTop="56dp"
-        android:onClick="guardar"
-        android:text="@string/label_boton"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ETCantidadLeche" />
+            <TextView
+                android:id="@+id/TVCantidadLeche"
+                android:layout_width="190dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginLeft="84dp"
+                android:layout_marginTop="56dp"
+                android:text="@string/label_cantidad_de_leche"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTipoEnvase" />
 
-    <TextView
-        android:id="@+id/TVCantidadLeche"
-        android:layout_width="190dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="296dp"
-        android:layout_marginLeft="296dp"
-        android:layout_marginTop="76dp"
-        android:text="@string/label_cantidad_de_leche"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ETNombreProveedor" />
+            <TextView
+                android:id="@+id/TVNroDeRuta"
+                android:layout_width="183dp"
+                android:layout_height="49dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginLeft="84dp"
+                android:layout_marginTop="352dp"
+                android:text="@string/label_numero_de_ruta"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/ETCantidadLeche"
-        android:layout_width="145dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:hint="@string/Cantidad_de_leche"
-        android:inputType="number"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup2"
-        app:layout_constraintTop_toBottomOf="@+id/TVCantidadLeche" />
+            <TextView
+                android:id="@+id/TVNombreProveedor"
+                android:layout_width="183dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="68dp"
+                android:layout_marginLeft="68dp"
+                android:layout_marginTop="352dp"
+                android:text="@string/label_nombre_proveedor"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/TVNroDeRuta"
+                app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/BtnGuardar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="240dp"
+                android:layout_marginLeft="240dp"
+                android:layout_marginTop="44dp"
+                android:onClick="guardar"
+                android:text="@string/label_boton"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ETCantidadLeche" />
+
+            <TextView
+                android:id="@+id/tvTipoEnvase"
+                android:layout_width="77dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="100dp"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/TVNroDeRuta"
+                tools:text="@string/tvTipoEnvase" />
+
+            <Spinner
+                android:id="@+id/spinnerRuta"
+                android:layout_width="75dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TVNroDeRuta" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="180dp"
+                android:layout_marginLeft="180dp"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@+id/spinnerRuta"
+                app:layout_constraintTop_toBottomOf="@+id/TVNombreProveedor">
+
+                <EditText
+                    android:id="@+id/ETNombreProveedor"
+                    android:layout_width="197dp"
+                    android:layout_height="58dp"
+                    android:ems="10"
+                    android:hint="@string/Nombre_del_proveedor"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="28dp"
+                    android:layout_height="30dp"
+                    android:onClick="borrarBusqueda"
+                    android:text="X"
+                    android:textSize="8sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="97dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginLeft="84dp"
+                android:layout_marginTop="20dp"
+                android:text="Entrega en:"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerRuta" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</LinearLayout>
+
+
+
