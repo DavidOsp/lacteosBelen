@@ -11,4 +11,6 @@
     <string name="label_seleccion_litros">Litros </string>
     <string name="label_boton">Guardar </string>
     <string name="tvNombre">Nombre</string>
+    <string name="etNombres">Nombres </string>
+    <string name="etApellidos">Apellidos </string>
 </resources>

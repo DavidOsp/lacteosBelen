@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+         android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".NuevoProveedorActivity">
+    >
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="188dp"
+            android:layout_marginLeft="188dp"
+            android:layout_marginTop="336dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="@string/etNombres"
+            android:inputType="textPersonName"
+            android:textColor="#090909"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/etApellido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="188dp"
+            android:layout_marginLeft="188dp"
+            android:layout_marginTop="104dp"
+            android:background="#F4F2F2"
+            android:ems="10"
+            android:hint="@string/etApellidos"
+            android:inputType="textPersonName"
+            android:textColor="#0C0C0C"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etNombre" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup2"
+            android:layout_width="218dp"
+            android:layout_height="63dp"
+            android:layout_marginStart="185dp"
+            android:layout_marginLeft="185dp"
+            android:layout_marginTop="84dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etApellido">
+
+            <RadioButton
+                android:id="@+id/rbLitros"
+                android:layout_width="104dp"
+                android:layout_height="match_parent"
+                android:background="#FFFF"
+                android:text="@string/label_seleccion_litros" />
+
+            <RadioButton
+                android:id="@+id/rbBotellas"
+                android:layout_width="139dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:text="@string/label_seleccion_botellas"
+                android:textColor="#000000" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnGuardarProveedor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="244dp"
+            android:layout_marginLeft="244dp"
+            android:layout_marginTop="68dp"
+            android:onClick="BotonGuardar"
+            android:text="Guardar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</LinearLayout>
+
+
+

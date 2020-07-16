@@ -1,11 +1,16 @@
 package com.example.lacteosbeln;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,12 +20,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lacteosbeln.util.FechaUtil;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -42,6 +49,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.regex.Pattern;
+import java.util.zip.Inflater;
 
 
 @RequiresApi(api = Build.VERSION_CODES.O)
@@ -83,18 +91,22 @@ public class MainActivity extends AppCompatActivity {
     String inicioDiaInforme;
     String finDiaInforme;
 
+    String diaDeLaSemana;
+
+    boolean refresh;
     ArrayList<ResumenSemanal> resumenSemanalList = new ArrayList<ResumenSemanal>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+       // getSupportActionBar().hide();
         getWindow().setBackgroundDrawableResource(R.drawable.interfaz_belen) ;
+        diaDeLaSemana = fechaUtil.getDiaDeLaSemana();
 
+        this.leerExcelProveedores();
         this.leerArchivosSemanales();
         this.leerExcel();
-        this.leerExcelProveedores();
         BasedeDatos dataBase = new BasedeDatos();
         dataBase.iniciarClase();
         this.componentesUI();
@@ -106,8 +118,47 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_belen, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.add_proveedor:
+                crearProveedor();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    //onResume
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (refresh){
+            refresh= false;
+            reiniciarActivity(this);
+        }
+
+        if (diaDeLaSemana.equals(fechaUtil.getDiaDeLaSemana())){
+
+        }else {
+            finish();
+            startActivity(getIntent());
+        }
+
+    }
+
     // Metodo que carga los componentes gráficos de la interfaz.
     public void componentesUI() {
+
         cantidadLeche = (EditText) findViewById(R.id.ETCantidadLeche);
         tipoDeEnvase = (TextView) findViewById(R.id.tvTipoEnvase);
         numeroDeRuta = (Spinner) findViewById(R.id.spinnerRuta);
@@ -164,6 +215,30 @@ public class MainActivity extends AppCompatActivity {
 
         });
         rvLista.setAdapter(adaptadorBuscador);
+
+
+    }
+
+    //reinicia una Activity
+    public static void reiniciarActivity(Activity actividad){
+        Intent intent = new Intent();
+        intent.setClass(actividad, actividad.getClass());
+        //llamamos a la actividad
+        actividad.startActivity(intent);
+        //finalizamos la actividad actual
+        actividad.finish();
+    }
+
+    public void nuevoPoveedor(View view){
+        refresh = true;
+        Intent nuevoProveedor = new Intent(this, NuevoProveedorActivity.class);
+        startActivity(nuevoProveedor);
+    }
+
+    public void crearProveedor(){
+        refresh = true;
+        Intent nuevoProveedor = new Intent(this, NuevoProveedorActivity.class);
+        startActivity(nuevoProveedor);
     }
 
 
@@ -1254,6 +1329,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "No listos!", Toast.LENGTH_LONG);
 
     }
+
 
 
 }
